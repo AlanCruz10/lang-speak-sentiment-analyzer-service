@@ -32,6 +32,7 @@ pipeline {
                         }
                         withCredentials([file(credentialsId: 'env_sentiment', variable: 'ENV_SENTIMENT_ANALYZER')]) {
                             script {
+                                sh "cp ${ENV_SENTIMENT_ANALYZER} ${WORKSPACE}"
                                 sh "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'cp ${ENV_SENTIMENT_ANALYZER} ${REPO_DIR}'"
                             }
                         }
