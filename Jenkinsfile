@@ -33,7 +33,7 @@ pipeline {
                         withCredentials([file(credentialsId: 'env_sentiment', variable: 'ENV_SENTIMENT_ANALYZER')]) {
                             script {
                                 sh "cp ${ENV_SENTIMENT_ANALYZER} ${WORKSPACE}"
-                                sh "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'cp ${ENV_SENTIMENT_ANALYZER} ${REPO_DIR}'"
+                                sh "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'cp ${WORKSPACE}/${ENV_SENTIMENT_ANALYZER} ${REPO_DIR}'"
                             }
                         }
                         def imageExists = sh(script: "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'docker images -q ${env.DOCKER_IMAGE_TAG}'", returnStatus: true) == 0
