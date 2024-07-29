@@ -7,7 +7,7 @@ pipeline {
 //         PORT = '8083:8083'
         DOCKER_IMAGE_TAG = "${DOCKER_IMAGE}:latest"
         REMOTE_USER = "ubuntu"
-        REMOTE_HOST = "54.161.32.8"
+        REMOTE_HOST = "3.225.80.186"
 //         EMAIL_ADDRESS = "213376@ids.upchiapas.edu.mx"
         SSH_CREDENTIALS_ID = "ssh-credentials-lang-speak-sentiment-analyzer-prod-ec2"
         REPO_URL = "https://github.com/AlanCruz10/${NAME_PROJECT}.git"
