@@ -84,7 +84,7 @@ pipeline {
             steps {
                 script {
                     sshagent(credentials: ["${env.SSH_CREDENTIALS_ID}"]) {
-                        sh "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'docker run --name ${env.DOCKER_IMAGE} -d ${env.DOCKER_IMAGE_TAG}'"
+                        sh "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'docker run --name ${env.DOCKER_IMAGE} -- memory="1g" --memory-swap="1g" -d ${env.DOCKER_IMAGE_TAG}'"
                     }
                 }
             }
