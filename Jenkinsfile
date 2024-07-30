@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'lang-speak-sentiment-analyzer-service-prod-deploy'
         NAME_PROJECT = 'lang-speak-sentiment-analyzer-service'
-//         PORT = '8083:8083'
+        PORT = '8087:8087'
         DOCKER_IMAGE_TAG = "${DOCKER_IMAGE}:latest"
         REMOTE_USER = "ubuntu"
         REMOTE_HOST = "3.225.80.186"
@@ -84,7 +84,7 @@ pipeline {
             steps {
                 script {
                     sshagent(credentials: ["${env.SSH_CREDENTIALS_ID}"]) {
-                        sh "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'docker run --name ${env.DOCKER_IMAGE} -d ${env.DOCKER_IMAGE_TAG}'"
+                        sh "ssh -o StrictHostKeyChecking=no ${env.REMOTE_USER}@${env.REMOTE_HOST} 'docker run --name ${env.DOCKER_IMAGE} -p ${PORT} -d ${env.DOCKER_IMAGE_TAG}'"
                     }
                 }
             }
