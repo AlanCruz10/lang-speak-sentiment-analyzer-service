@@ -34,4 +34,4 @@ class AnalyzeMessageUseCase:
                                     user_id=request.user_id,
                                     uuid=request.uuid,
                                     muted=muted)
-        return response.to_dict()
+        return response

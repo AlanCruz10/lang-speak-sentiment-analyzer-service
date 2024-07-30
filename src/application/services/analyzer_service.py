@@ -14,6 +14,6 @@ class AnalyzerService(AnalyzerServicePortInput):
 
         execute = self.analyzer_message_use_case.execute(request)
 
-        response = BaseResponse(data=execute, message="Message analyzed successfully.", success=execute['muted'], status_code=200,
+        response = BaseResponse(data=execute, message="Message analyzed successfully.", success=execute.muted, status_code=200,
                                 http_status="OK")
-        return response.to_json()
+        return response
